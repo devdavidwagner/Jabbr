@@ -1,0 +1,138 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 6, 2017, 3:39:42 PM
+    Author     : dwagner6506
+*/
+
+html{
+    width: 1000px;
+    margin-left: 400px;
+    margin-right: 200px;
+    height: 1080px;
+    
+
+    background: #7c5a4e; /* Old browsers */
+    background: -moz-linear-gradient(top, #7c5a4e 0%, #3f1811 100%, #752201 100%, #bf6e4e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #7c5a4e 0%,#3f1811 100%,#752201 100%,#bf6e4e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #7c5a4e 0%,#3f1811 100%,#752201 100%,#bf6e4e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c5a4e', endColorstr='#bf6e4e',GradientType=0 ); /* IE6-9 */
+}
+
+h1{
+    width: 100px;
+}
+
+#logInSec{
+      font-family: 'Russo One', sans-serif;
+
+    border: solid black 2px;
+    box-shadow: 5px 64px 12px 40px rgba(0,0,0,0.4),
+             12px 12px 0px 8px rgba(0,0,0,0.4);
+    background-color: #7c5a4e;
+    
+    margin-right: 400px;
+    margin-left: 100px;
+    margin-top: 20px;
+    
+    padding-left: 200px;
+    padding-right: 400px;
+    padding-bottom: 50px;
+    
+    
+}
+
+#logInSec input{
+    
+    
+    margin-bottom: 20px;
+    
+    
+}
+
+#signUpSec{
+    
+    font-family: 'Russo One', sans-serif;
+
+    border: solid black 2px;
+    box-shadow: 5px 64px 12px 40px rgba(0,0,0,0.4),
+             12px 12px 0px 8px rgba(0,0,0,0.4);
+    background-color: #7c5a4e;
+    
+    margin-right: 400px;
+    margin-left: 100px;
+    margin-top: 20px;
+    
+    padding-left: 200px;
+    padding-right: 400px;
+    padding-bottom: 50px;
+    
+}
+
+#signUpSec input{
+    
+    
+    margin-bottom: 20px;
+    
+    
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    margin-left: 100px;
+    margin-right: 450px;
+  
+
+}
+
+li {
+    float: left;
+   
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+background-color:#4CAF50;
+}
+
+
+/*CUSTOM IDS*/
+#headerLogo{
+    
+    
+    width: 100px;
+    height: 100px;
+  
+ 
+   
+    
+}
+
+#mainHeader{
+    float: right;
+    font-size: 40px;
+    margin-right: 500px;
+    
+    font-family: 'Russo One', sans-serif;
+
+}
