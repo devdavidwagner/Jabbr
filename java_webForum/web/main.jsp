@@ -4,12 +4,16 @@
     Author     : David
 --%>
 
-<jsp:include page="/includes/forumBanner.jsp" />
+<jsp:include page="/includes/forumBannerUser.jsp" />
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<section>
-    <p>Log in successful</p>
-</section>
+
+    <section>
+        <p>Log in successful</p>
+    </section>
+
 
 
 

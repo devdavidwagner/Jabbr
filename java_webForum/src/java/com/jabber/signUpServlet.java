@@ -41,23 +41,29 @@ public class signUpServlet extends HttpServlet {
                 message += "Please provide a username that is atleast 3 characters" + "<br>";
                   url = "/signUp.jsp";
             }
-            else if(password == null || password.length() < 3 || password.isEmpty() )
+            else if(password == null || password.length() < 6 || password.isEmpty() )
             {
-                message += "Please proved a password that is:" + "<br>" + "more than 6 characters";
+                message += "Please provide a password that is:" + "<br>" + "more than 6 characters";
                 url = "/signUp.jsp";
             }
             else
             {
+ 
+                
+                if(UserDB.checkUserExits(user) == true)
+                {
+                    message = "Username taken!";
+                    url = "/signUp.jsp";
+                }
+                else
+                {
+                       user.setPassword(hashed);
+                UserDB.insert(user);
                 message = null;
                 url = "/thankYou.jsp";
-               
-              
+                }
                 
-
-                user.setPassword(hashed);
-                
-                
-                UserDB.insert(user);
+             
             }
         
            request.setAttribute("user", user);

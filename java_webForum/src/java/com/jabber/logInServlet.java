@@ -61,7 +61,10 @@ public class logInServlet extends HttpServlet {
                 if(oldHash.equals(user.getPassword()))
                 {
                     message = null;
-                    url = "/main.jsp";
+                    url = "/main";
+                    
+                    HttpSession session = request.getSession();
+                    session.setAttribute("username", username);
                 }
                 else
                 {
