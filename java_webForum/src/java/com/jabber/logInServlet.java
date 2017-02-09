@@ -50,21 +50,31 @@ public class logInServlet extends HttpServlet {
             {
                
                
-                // Hash a password
+                 
                 String hashed = BCrypt.hashpw(password, salt);
-                    
+             
                 user.setPassword(hashed);
-                
-                
+         
+                 
                String oldHash = authDB.logInUser(user);
               
                 if(oldHash.equals(user.getPassword()))
                 {
-                    message = null;
-                    url = "/main";
                     
-                    HttpSession session = request.getSession();
-                    session.setAttribute("username", username);
+                    message = null;
+                    url = "/main.jsp";
+                
+                    try
+                    {
+                         
+                     HttpSession session = request.getSession();
+                     session.setAttribute("username", username);
+                    
+                    }catch(Exception e)
+                    {
+                        System.out.println("---------------!!!!" + e.toString());
+                    }
+                  
                 }
                 else
                 {
@@ -75,11 +85,16 @@ public class logInServlet extends HttpServlet {
         
            request.setAttribute("user", user);
            request.setAttribute("message", message);
-        
+       try{
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
-        
+       }
+       catch(Exception e){
+           System.out.println("---------------!!!!" + e.toString());
+       }
+       
+       }
      }
 
 }

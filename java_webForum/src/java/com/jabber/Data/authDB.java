@@ -87,7 +87,8 @@ public class authDB {
                 
                 while(rs.next())
                 {
-                   hashedPass = rs.getString(1);
+                   hashedPass = rs.getString("password");
+                     
                 }
                 
                  conn.close();
