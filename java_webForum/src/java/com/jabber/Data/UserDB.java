@@ -16,7 +16,7 @@ public class UserDB {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             String dbURL = "jdbc:mysql://127.0.0.1:3306/jabber?relaxAutoCommit=true";  
-            Connection conn = DriverManager.getConnection(dbURL, "root","");
+            Connection conn = DriverManager.getConnection(dbURL, "admin","admin");
             
             try{
                 
@@ -68,7 +68,7 @@ public class UserDB {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             String dbURL = "jdbc:mysql://127.0.0.1:3306/jabber?relaxAutoCommit=true";  
-            Connection conn = DriverManager.getConnection(dbURL, "root","");
+            Connection conn = DriverManager.getConnection(dbURL, "admin","admin");
             
             try{
                 

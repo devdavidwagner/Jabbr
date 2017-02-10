@@ -62,7 +62,7 @@ public class logInServlet extends HttpServlet {
                 {
                     
                     message = null;
-                    url = "/main.jsp";
+                    url = "mainServlet";
                 
                     try
                     {
@@ -97,4 +97,4 @@ public class logInServlet extends HttpServlet {
        }
      }
 
-}
+
