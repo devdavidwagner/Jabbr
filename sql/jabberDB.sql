@@ -19,10 +19,12 @@ threadID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 username varchar(255) NOT NULL,
 userID int NOT NULL ,
 threadTitle varchar(255) NOT NULL,
-postedTime DATE NOT NULL,
-threadContent BLOB(50000) NOT NULL,
-contentType varchar(255) NOT NULL,
+postedTime varchar(255) NOT NULL,
+threadContent varchar(8000) NOT NULL,
  FOREIGN KEY(userID) references User(userID)
 
 );
+
+
+
 

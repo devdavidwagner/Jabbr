@@ -1,37 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
- <!-- filters -->
- 
+    <!-- filters -->
     <filter>
         <filter-name>mainFilter</filter-name>
         <filter-class>com.jabber.Filters.mainFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>mainFilter</filter-name>
-        <url-pattern>/main/*</url-pattern>
+        <url-pattern>/main</url-pattern>
     </filter-mapping>
-    
- 
- 
- 
- 
- <!-- asdasd -->
+    <!-- asdasd -->
+    <servlet-mapping>
+        <servlet-name>postServlet</servlet-name>
+        <url-pattern>/postServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Protected Area </web-resource-name>
-            <url-pattern>/main/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>user</auth-constraint>
-    </security-constraint>
-    <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>User</realm-name>
-    </login-config>
     <servlet>
         <servlet-name>signUpServlet</servlet-name>
         <servlet-class>com.jabber.signUpServlet</servlet-class>
@@ -42,10 +29,13 @@
     </servlet>
     <servlet>
         <servlet-name>mainServlet</servlet-name>
-        <jsp-file>/main.jsp/</jsp-file>
         <servlet-class>com.jabber.mainServlet</servlet-class>
     </servlet>
     <!-- Mapping -->
+    <servlet>
+        <servlet-name>postServlet</servlet-name>
+        <servlet-class>com.jabber.postServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signUpServlet</servlet-name>
         <url-pattern>/signUp</url-pattern>
@@ -54,10 +44,13 @@
         <servlet-name>logInServlet</servlet-name>
         <url-pattern>/logIn</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>mainServlet</servlet-name>
         <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>postServlet</servlet-name>
+        <url-pattern>/post</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

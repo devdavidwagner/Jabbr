@@ -32,12 +32,15 @@ public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
         HttpSession session = request.getSession(false);
         
        
-        if (session == null || session.getAttribute("username") == null) {
+        if (session == null || session.getAttribute("user") == null) {
             System.out.println("ERROR?----------------");
             response.sendRedirect(request.getContextPath() + "/logIn.jsp"); // No logged-in user found, so redirect to login page.
         } else {
             chain.doFilter(req, res); // Logged-in user found, so just continue request.
-                 System.out.println("sucess?----------------");
+                 
+            
+            
+            
         }
 }
 

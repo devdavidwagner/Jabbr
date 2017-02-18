@@ -62,13 +62,13 @@ public class logInServlet extends HttpServlet {
                 {
                     
                     message = null;
-                    url = "mainServlet";
+                    url = "/main.jsp";
                 
                     try
                     {
                          
                      HttpSession session = request.getSession();
-                     session.setAttribute("username", username);
+                     session.setAttribute("user", user);
                     
                     }catch(Exception e)
                     {
