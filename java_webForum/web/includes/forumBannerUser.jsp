@@ -6,6 +6,9 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,9 +31,11 @@
              
            <ul>
                 <li><a href="main.jsp">Jabbr</a></li>
-                 <li><a href="signUp.jsp" class="nav">Profile</a></li>
+                 <li id="name"><a href="signUp.jsp" class="nav">${user.username}</a></li>
                  <li><a href="signUp.jsp" class="nav">Log Out</a></li>
+                 
             </ul>
+           
            
           
             

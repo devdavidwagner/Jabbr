@@ -82,8 +82,13 @@ public class logInServlet extends HttpServlet {
                   url = "/logIn.jsp"; 
                 }
             }
+        HttpSession session = request.getSession(true);
         
-           request.setAttribute("user", user);
+        session.setAttribute("user", user);
+        
+        
+        
+            request.setAttribute("username", user.getUsername());
            request.setAttribute("message", message);
        try{
         getServletContext()

@@ -18,10 +18,33 @@ import java.sql.ResultSet;
  * @author David
  */
 public class PostDB {
-    public static long delete(ThreadPost post) {
+    public static long delete(int threadID) {
         int status = 0;
         
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            String dbURL = "jdbc:mysql://127.0.0.1:3306/jabber?relaxAutoCommit=true";  
+            Connection conn1 = DriverManager.getConnection(dbURL, "admin","admin");
+            
+            
+                String preparedSQL = "DELETE FROM thread WHERE threadID = ?";
+              PreparedStatement ps = conn1.prepareStatement(preparedSQL);
+              
+              ps.setInt(1, threadID);
+              
+              status = ps.executeUpdate();
+              
+              conn1.commit(); // This statement fixed the problem
+              conn1.close();
+            
+            
+        }
         
+        catch(Exception e){
+            
+              System.out.println("ERRORRR");
+                e.toString();
+        }
         
         return status;
     }

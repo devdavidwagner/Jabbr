@@ -11,8 +11,8 @@
     </filter-mapping>
     <!-- asdasd -->
     <servlet-mapping>
-        <servlet-name>postServlet</servlet-name>
-        <url-pattern>/postServlet</url-pattern>
+        <servlet-name>editServlet</servlet-name>
+        <url-pattern>/edit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -33,8 +33,12 @@
     </servlet>
     <!-- Mapping -->
     <servlet>
-        <servlet-name>postServlet</servlet-name>
-        <servlet-class>com.jabber.postServlet</servlet-class>
+        <servlet-name>deleteServlet</servlet-name>
+        <servlet-class>com.jabber.deleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editServlet</servlet-name>
+        <servlet-class>com.jabber.editServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>signUpServlet</servlet-name>
@@ -48,9 +52,9 @@
         <servlet-name>mainServlet</servlet-name>
         <url-pattern>/main</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
-        <servlet-name>postServlet</servlet-name>
-        <url-pattern>/post</url-pattern>
+    <servlet-mapping>
+        <servlet-name>deleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

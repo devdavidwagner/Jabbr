@@ -6,9 +6,11 @@
             <file>file:/C:/Users/David/web_forum/java_webForum/web/styles/main.css</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/src/java/com/jabber/Models/ThreadPost.java</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/web/signUp.jsp</file>
+            <file>file:/C:/Users/David/web_forum/java_webForum/src/java/com/jabber/editServlet.java</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/web/META-INF/context.xml</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/src/java/com/jabber/Data/PostDB.java</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/web/includes/forumBannerUser.jsp</file>
+            <file>file:/C:/Users/David/web_forum/java_webForum/web/javascript/js.js</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/src/java/com/jabber/logInServlet.java</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/src/java/com/jabber/Filters/mainFilter.java</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/web/includes/forumBanner.jsp</file>
@@ -16,6 +18,7 @@
             <file>file:/C:/Users/David/web_forum/java_webForum/src/java/com/jabber/Data/UserDB.java</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/web/main.jsp</file>
+            <file>file:/C:/Users/David/web_forum/java_webForum/src/java/com/jabber/deleteServlet.java</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/web/index.jsp</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/src/java/com/jabber/mainServlet.java</file>
             <file>file:/C:/Users/David/web_forum/java_webForum/web/logIn.jsp</file>

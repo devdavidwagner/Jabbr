@@ -4,16 +4,30 @@
  * and open the template in the editor.
  */
 
-$( document ).ready(function() {
+window.onload = function() {
     
     
  
     
+ 
+    $('.hideTheseReply').hide();
+        
+  
+
+                $('#reply').click(function(){
+
+                     var id = document.getElementById('asd').textContent;
+                 
+                    $('#'+ id).show();
+                   $('#reply').hide();
+                 
+                 
+                });
+  
     
     
     
-    
-});
+    };
 
 
 function checkPass()
