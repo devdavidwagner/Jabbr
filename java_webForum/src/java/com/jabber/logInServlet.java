@@ -43,12 +43,17 @@ public class logInServlet extends HttpServlet {
             }
             else if(password == null || password.length() < 3 || password.isEmpty() )
             {
-                message += "Please proved a password that is:" + "<br>" + "more than 6 characters";
+                message += "Please provide a password that is:" + "<br>" + "more than 6 characters";
+                url = "/logIn.jsp";
+            }
+            else if(!UserDB.checkUserExits(user))
+            {
+                message += "User does not exist";
                 url = "/logIn.jsp";
             }
             else
             {
-               
+            
                
                  
                 String hashed = BCrypt.hashpw(password, salt);

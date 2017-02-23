@@ -11,6 +11,8 @@ import com.jabber.Models.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +36,7 @@ public class mainServlet extends HttpServlet {
            String title = request.getParameter("title");
           String content = request.getParameter("content");
           User user = (User) session.getAttribute("user");
-          LocalDate time = LocalDate.now();
+           LocalDate time = LocalDate.now();
           
          
          String url = "";

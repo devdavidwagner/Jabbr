@@ -11,23 +11,27 @@ window.onload = function() {
     
  
     $('.hideTheseReply').hide();
-        
+       
+   
+   $('button').click( function(){
+       
   
+        for(var i =0; i < $('.hideTheseReply').length + 1; i++)
+        {
+              
+                   if( i == $(event.target).attr("id"))
+                   {
 
-                $('#reply').click(function(){
-
-                     var id = document.getElementById('asd').textContent;
-                 
-                    $('#'+ id).show();
-                   $('#reply').hide();
-                 
-                 
-                });
-  
-    
-    
-    
-    };
+                            $('#t'+ i).show();
+                            $('#'+ i).hide();
+                
+                     }
+              
+                   
+        }
+                
+     });
+};
 
 
 function checkPass()

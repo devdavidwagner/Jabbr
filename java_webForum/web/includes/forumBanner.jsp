@@ -13,7 +13,8 @@
          <script type="text/javascript" src="javascript/jquery-3.1.1.js" id="jQu"></script>
          <script type="text/javascript" src="javascript/js.js" id="javascript"></script>
          <link rel="icon" href="images/speech-bubble.ico" type="image/x-icon" id="logo">
-         
+         <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
+
          <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
 
 

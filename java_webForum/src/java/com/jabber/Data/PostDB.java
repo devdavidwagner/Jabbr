@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.ZonedDateTime;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -72,13 +73,13 @@ public class PostDB {
             String preparedSQL = "INSERT INTO thread (threadID, username, userID, threadTitle, postedTime, threadContent)" +
                         "VALUES (?,?,?,?,?,?);";
               PreparedStatement ps = conn1.prepareStatement(preparedSQL);
-                
+                ZonedDateTime zdt = ZonedDateTime.now();
             
                 ps.setString(1, null);
                 ps.setString(2, post.getUsername());
                 ps.setInt(3, userID);
                 ps.setString(4, post.getTitle());
-                ps.setString(5, post.getTime().toString());
+                ps.setString(5, post.getTime().toString() + " " + zdt.toString() );
                 ps.setString(6, post.getContent());
            
                

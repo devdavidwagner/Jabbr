@@ -20,12 +20,13 @@
 
 <sql:query dataSource="${thread}" var="recentThreads">
 SELECT * FROM jabber.thread
-ORDER BY postedTime;
+ORDER BY postedTime DESC;
 </sql:query>
 
 
     <section>
         <div id ="tray">
+            <h1 style="width: 200px;">New Jab! </h1>
             <p style="color:red; font-weight: bold;">${message}</p>
             <form action = "main" method ="post">
                 <label for="title">Title
@@ -47,7 +48,7 @@ ORDER BY postedTime;
         <c:forEach var="row" items="${recentThreads.rows}">
           
             <div id = "posts">
-                <h4><c:out value="${row.threadTitle}"/></h4>
+                <h2 id="titles"><c:out value="${row.threadTitle}"/></h2>
                 <div>
                     <p  style="font-style: italic;">By: <c:out value="${row.username}"/></p>
                     <p style="font-size: 12px;"><c:out value="${row.postedTime}"/></p>
@@ -61,7 +62,7 @@ ORDER BY postedTime;
                     <div id="content">
                         
                         <p><c:out value="${row.threadContent}"/></p>
-                        <p hidden  id="asd"><c:out value="${row.threadID}"/></p>
+                        <p  id="asd"><c:out value="${row.threadID}"/></p>
                         
                         
                     </div>
@@ -93,8 +94,8 @@ ORDER BY postedTime;
                 
                        
                      <div class="replyFormDiv">
-               <button type="Submit" class = "btn"  value="reply" id="reply">Reply</button>
-                           <div class ="hideTheseReply" id="${row.threadID}" >
+               <button type="Submit" class = "btnReply"  value="reply" id="${row.threadID}">Reply</button>
+                           <div class ="hideTheseReply" id="t${row.threadID}">
                            <form action = "reply" method ="post">
 
                                 <label for="content">
