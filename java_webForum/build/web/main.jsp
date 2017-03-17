@@ -16,7 +16,9 @@
      user="admin"  password="admin"/>
 
 
-
+<sql:query dataSource="${thread}" var="reply">
+SELECT * FROM jabber.reply;
+</sql:query>
 
 <sql:query dataSource="${thread}" var="recentThreads">
 SELECT * FROM jabber.thread
@@ -50,7 +52,7 @@ ORDER BY postedTime DESC;
             <div id = "posts">
                 <h2 id="titles"><c:out value="${row.threadTitle}"/></h2>
                 <div>
-                    <p  style="font-style: italic;">By: <c:out value="${row.username}"/></p>
+                    <p  style="font-style: italic; text-decoration: underline; font-size: 15px;">By: <c:out value="${row.username}"/></p>
                     <p style="font-size: 12px;"><c:out value="${row.postedTime}"/></p>
                     <hr>
                     
@@ -62,13 +64,32 @@ ORDER BY postedTime DESC;
                     <div id="content">
                         
                         <p><c:out value="${row.threadContent}"/></p>
-                        <p  id="asd"><c:out value="${row.threadID}"/></p>
                         
                         
+                        <hr>
+                    </div>
+                    <div id ="replies">
+                       
+                            
+                        <c:forEach var="replyRow" items="${reply.rows}">
+                             <c:if test="${row.threadID == replyRow.threadID}">
+                                   
+                                 <p  style="font-style: italic; text-decoration: underline; font-size: 12px;"><c:out value="${replyRow.username}"/></p>
+                                    <p style="font-style: italic; font-size: 8px;"><c:out value="${replyRow.postedTime}"/></p>
+                                    <hr>
+                                   <p><c:out value="${replyRow.replyContent}"/></p>
+                                   <hr>
+                                  
+                             </c:if>
+                        </c:forEach>  
+                       
+                            
+                            
+                            
                     </div>
                 
              
-                <hr>
+             
                 <div id="options">
                    
                     <c:if test="${user.username == row.username}">
@@ -95,15 +116,16 @@ ORDER BY postedTime DESC;
                        
                      <div class="replyFormDiv">
                <button type="Submit" class = "btnReply"  value="reply" id="${row.threadID}">Reply</button>
+               <p style="color:red; font-weight: bold;">${messageReply}</p>
                            <div class ="hideTheseReply" id="t${row.threadID}">
                            <form action = "reply" method ="post">
-
+                                
                                 <label for="content">
-                                  <textarea cols="25" rows="7" name="content" class="replyContent"></textarea> <br>
+                                  <textarea cols="25" rows="7" name="replyContent" class="replyContent"></textarea> <br>
                                 </label>
                          
-                                
-                       
+                                 
+                                 <input type="text" name="threadReply" value="${row.threadID}" hidden>
                                 <button type="Submit" class = "btn"  value="Submit" id="sub">Submit Reply</button>
                                
                                 </form>

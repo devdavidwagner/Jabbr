@@ -10,9 +10,17 @@
         <url-pattern>/main</url-pattern>
     </filter-mapping>
     <!-- asdasd -->
+    <servlet>
+        <servlet-name>replyServlet</servlet-name>
+        <servlet-class>com.jabber.replyServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>editServlet</servlet-name>
         <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>replyServlet</servlet-name>
+        <url-pattern>/reply</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

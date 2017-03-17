@@ -28,13 +28,19 @@ public class PostDB {
             Connection conn1 = DriverManager.getConnection(dbURL, "admin","admin");
             
             
-                String preparedSQL = "DELETE FROM thread WHERE threadID = ?";
+
+            
+            
+                String preparedSQL = "DELETE FROM reply WHERE threadID = ?;" ;
+                
+              String preparedSQL2 = "DELETE FROM thread WHERE threadID = ?;";
               PreparedStatement ps = conn1.prepareStatement(preparedSQL);
+              PreparedStatement ps2 = conn1.prepareStatement(preparedSQL2);
               
               ps.setInt(1, threadID);
-              
+              ps2.setInt(1, threadID);
               status = ps.executeUpdate();
-              
+              ps2.executeUpdate();
               conn1.commit(); // This statement fixed the problem
               conn1.close();
             
@@ -43,8 +49,8 @@ public class PostDB {
         
         catch(Exception e){
             
-              System.out.println("ERRORRR");
-                e.toString();
+              System.out.println("ERRORRR  " + e.toString());
+                
         }
         
         return status;

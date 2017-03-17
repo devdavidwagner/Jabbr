@@ -16,15 +16,19 @@ window.onload = function() {
    $('button').click( function(){
        
   
-        for(var i =0; i < $('.hideTheseReply').length + 1; i++)
-        {
-              
+       //i< MUST BE BIGGER THAN IS CURRENTLY
+       //THREAD ID IS LARGER THAN LENGTH ONLY 2 loops
+        for(var i =0; i < $('.hideTheseReply').length + $(event.target).attr("id"); i++)
+        {       
+          
+                
                    if( i == $(event.target).attr("id"))
                    {
-
+                    
                             $('#t'+ i).show();
                             $('#'+ i).hide();
-                
+                           
+                              break;
                      }
               
                    

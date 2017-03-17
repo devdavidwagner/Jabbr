@@ -25,6 +25,20 @@ threadContent varchar(8000) NOT NULL,
 
 );
 
+CREATE TABLE Reply
+(
+replyID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+username varchar(255) NOT NULL,
+userID int NOT NULL ,
+replyContent varchar(1000) NOT NULL,
+postedTime varchar(255) NOT NULL,
+threadID int NOT NULL,
+FOREIGN KEY(userID) references User(userID),
+FOREIGN KEY(threadID) references Thread(threadID)
 
+
+
+
+);
 
 
