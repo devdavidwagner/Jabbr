@@ -39,66 +39,146 @@ public class replyServlet extends HttpServlet {
             throws ServletException, IOException {
        HttpSession session = request.getSession();
         
-      
-          String content = request.getParameter("replyContent");
-          User user = (User) session.getAttribute("user");
-          String threadID = request.getParameter("threadReply");
-           LocalDate time = LocalDate.now();
-          
-         
-         String url = "";
-          
-          String errorMessage = "";
-          Boolean error = false;
-          
-          //validations
-          if(user == null)
-          {
-              errorMessage += "User not logged in!";
-              error = true;
+      String isReply = request.getParameter("isReply");
+      if(isReply == null)
+      {
+            System.out.println("--------- original reply ------!!!!");
+
+            String content = request.getParameter("replyContent");
+            User user = (User) session.getAttribute("user");
+            String threadID = request.getParameter("threadReply");
+             LocalDate time = LocalDate.now();
+
+
+           String url = "";
+
+            String errorMessage = "";
+            Boolean error = false;
+
+            //validations
+            if(user == null)
+            {
+                errorMessage += "User not logged in!";
+                error = true;
+            }
+
+
+            if(content == "")
+            {
+                errorMessage += "You must enter some content for your reply!";
+                error = true;
+            }
+
+           if(error == false)
+           {
+              Reply reply = new Reply();
+              reply.setContent(content);
+              reply.setUsername(user.getUsername());
+              reply.setTime(time);
+              reply.setThreadID(threadID);
+
+              ReplyDB.insert(reply);
+
+             url = "/main.jsp";
+
+           }
+           else
+           {
+                url = "/main.jsp";
+               request.setAttribute("messageReply", errorMessage);
+           }
+
+
+
+
+
+
+                    try{
+                        getServletContext()
+                  .getRequestDispatcher(url)
+                  .forward(request, response);
+                    }catch(Exception e)
+                    {
+                           System.out.println("---------"+ e.toString() +"------!!!!");
+                    }
           }
-          
-          
-          if(content == "")
-          {
-              errorMessage += "You must enter some content for your reply!";
-              error = true;
-          }
-          
-         if(error == false)
-         {
-            Reply reply = new Reply();
-            reply.setContent(content);
-            reply.setUsername(user.getUsername());
-            reply.setTime(time);
-            reply.setThreadID(threadID);
-            
-            ReplyDB.insert(reply);
-            
-           url = "/main.jsp";
-            
-         }
-         else
-         {
-              url = "/main.jsp";
-             request.setAttribute("messageReply", errorMessage);
-         }
-         
-         
-        
-        
-               
-                  
-                  try{
-                      getServletContext()
-                .getRequestDispatcher(url)
-                .forward(request, response);
-                  }catch(Exception e)
-                  {
-                         System.out.println("---------"+ e.toString() +"------!!!!");
-                  }
-          
+            else
+            {
+                System.out.println("--------- child reply ------!!!!");
+                
+                String content = request.getParameter("replyContent");
+            User user = (User) session.getAttribute("user");
+             String replyID = request.getParameter("parentReply");
+              String threadID = request.getParameter("threadReply");
+             LocalDate time = LocalDate.now();
+
+
+           String url = "";
+
+            String errorMessage = "";
+            Boolean error = false;
+
+            //validations
+            if(user == null)
+            {
+                errorMessage += "User not logged in!";
+                error = true;
+            }
+
+
+            if(content == "")
+            {
+                errorMessage += "You must enter some content for your reply!";
+                error = true;
+            }
+
+           if(error == false)
+           {
+              Reply reply = new Reply();
+              reply.setContent(content);
+              reply.setUsername(user.getUsername());
+              reply.setTime(time);
+              reply.setThreadID(threadID);
+              reply.setParentReplyID(replyID);
+
+              ReplyDB.insertSubReply(reply);
+
+             url = "/main.jsp";
+
+           }
+           else
+           {
+                url = "/main.jsp";
+               request.setAttribute("messageReply", errorMessage);
+           }
+
+
+
+
+
+
+                    try{
+                        getServletContext()
+                  .getRequestDispatcher(url)
+                  .forward(request, response);
+                    }catch(Exception e)
+                    {
+                           System.out.println("---------"+ e.toString() +"------!!!!");
+                    }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+
+            }
        }
+    
     }
 
     

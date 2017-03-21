@@ -13,25 +13,60 @@ window.onload = function() {
     $('.hideTheseReply').hide();
        
    
-   $('button').click( function(){
+   $('button').on('click', function (event) { 
        
-  
-       //i< MUST BE BIGGER THAN IS CURRENTLY
-       //THREAD ID IS LARGER THAN LENGTH ONLY 2 loops
-        for(var i =0; i < $('.hideTheseReply').length + $(event.target).attr("id"); i++)
-        {       
-          
-                
-                   if( i == $(event.target).attr("id"))
-                   {
-                    
-                            $('#t'+ i).show();
-                            $('#'+ i).hide();
-                           
-                              break;
-                     }
-              
-                   
+       
+       var targ = $(event.target).attr("id");
+       
+       targ = targ.substring(0,3);
+       
+      
+   
+        
+        if( targ == "sub")
+        {
+        
+            var realTarg = $(event.target).attr("id");
+            realTarg = realTarg.substring(3);
+            
+            
+              for(var i =0; i < $('.hideTheseReply').length + realTarg; i++)
+              {       
+
+
+                         if( i == realTarg)
+                         {
+
+                                  $('#r'+ i).show();
+                                  $('#sub'+ i).hide();
+
+                                    break;
+                           }
+
+
+              }
+        }
+        else
+        {
+            
+                for(var i =0; i < $('.hideTheseReply').length + $(event.target).attr("id"); i++)
+                {       
+
+
+                    if( i == $(event.target).attr("id"))
+                    {
+
+                             $('#t'+ i).show();
+                             $('#'+ i).hide();
+
+                               break;
+                      }
+
+
+                }
+            
+            
+            
         }
                 
      });

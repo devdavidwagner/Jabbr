@@ -17,19 +17,70 @@ public class Reply implements Serializable {
     private String content;
     private LocalDate time;
     private String  threadID;
+    public String parentReplyID;
+    public String childReplyID;
+    public String genericReplyID;
     
       public Reply() {
         username = "";
         threadID = "";
         content = "";
         time = null;
+        parentReplyID = "";
+        childReplyID = "";
+        genericReplyID = "";
     }
-
+      
+      //reply to thread post
     public Reply(String username, String content, LocalDate time, String threadID) {
         this.username = username;
         this.content = content;
         this.time = time;
         this.threadID = threadID;
+    }
+    //reply with only a parent or only a child reply
+    public Reply(String username, String content, LocalDate time, String threadID, String replyID) {
+        this.username = username;
+        this.content = content;
+        this.time = time;
+        this.threadID = threadID;
+        this.genericReplyID = replyID;
+    }
+    //reply with parent and child reply
+       public Reply(String username, String content, LocalDate time, String threadID,  String childReplyID, String parentReplyID) {
+        this.username = username;
+        this.content = content;
+        this.time = time;
+        this.threadID = threadID;
+        this.childReplyID = childReplyID;
+        this.parentReplyID = parentReplyID;
+    }
+       
+    public String getChildReplyID(){
+        
+        return childReplyID;
+    }
+    
+    public void setChildReplyID(String childReplyID){
+        this.childReplyID = childReplyID;
+    }
+    
+      public String getParentReplyID(){
+        
+        return parentReplyID;
+    }
+    
+    public void setParentReplyID(String parentReplyID){
+        this.parentReplyID = parentReplyID;
+    }
+    
+      public String getGenericID(){
+        
+        return genericReplyID;
+    }
+    
+    public void setGenericID(String replyID){
+        this.genericReplyID = replyID;
     }
     
     public String getThreadID(){

@@ -15,9 +15,16 @@
      url="jdbc:mysql://127.0.0.1:3306/jabber?relaxAutoCommit=true"
      user="root"  password="Conestoga1"/>
 
+<%//<sql:setDataSource var="thread" driver="com.mysql.jdbc.Driver"
+    // url="jdbc:mysql://127.0.0.1:3306/jabber?relaxAutoCommit=true"
+    // user="admin"  password="admin"/> %>
 
 <sql:query dataSource="${thread}" var="reply">
 SELECT * FROM jabber.reply;
+</sql:query>
+
+<sql:query dataSource="${thread}" var="subReplyCount">
+SELECT COUNT(*) FROM jabber.reply WHERE parentReplyID IS NOT NULL;
 </sql:query>
 
 <sql:query dataSource="${thread}" var="recentThreads">
@@ -72,23 +79,78 @@ ORDER BY postedTime DESC;
                        
                             
                         <c:forEach var="replyRow" items="${reply.rows}">
-                             <c:if test="${row.threadID == replyRow.threadID}">
-                                   
-                                 <p  style="font-style: italic; text-decoration: underline; font-size: 12px;"><c:out value="${replyRow.username}"/></p>
+                            <c:if test="${row.threadID == replyRow.threadID}">
+
+                                    <p  style="font-style: italic; text-decoration: underline; font-size: 12px;"><c:out value="${replyRow.username}"/></p>
                                     <p style="font-style: italic; font-size: 8px;"><c:out value="${replyRow.postedTime}"/></p>
-                                    <hr>
-                                   <p><c:out value="${replyRow.replyContent}"/></p>
-                                   <hr>
-                                  
-                             </c:if>
-                        </c:forEach>  
-                       
-                            
-                            
-                            
+                                <hr>
+                                    <p><c:out value="${replyRow.replyContent}"/></p>
+                                <hr>
+
+
+
+                                        <div class ="buttonTray">
+                                       <c:if test="${user.username == replyRow.username}">
+                                           <form action="edit">
+                                              <input type="text" name="threadID" value="${replyRow.replyID}" hidden>   
+                                           <input type="Submit" value ="Edit" class="btn" id ="edit"/>
+                                           </form>
+
+
+                                           <form action="delete" method = "post">
+                                                <input type="text" name="threadID" value="${replyRow.replyID}" hidden>
+                                                <input type="Submit" value ="Delete" class = "btn" id ="delete"/>
+
+                                           </form>
+                                       </c:if>
+
+
+                                            <div class="replyFormDiv">
+                                                   <button type="Submit" class = "btnReply"  value="reply" id="sub${replyRow.replyID}">Reply</button>
+                                                   <p style="color:red; font-weight: bold;">${messageReply}</p>
+                                                  <div class ="hideTheseReply" id="r${replyRow.replyID}">
+                                                  <form action = "reply" method ="post">
+
+                                                       <label for="content">
+                                                         <textarea cols="25" rows="7" name="replyContent" class="replyContent"></textarea> <br>
+                                                       </label>
+
+                                                      <input type="text" id="isReply" name="isReply" value="isReply" hidden>
+                                                        <input type="text" name="parentReply" value="${replyRow.replyID}" hidden>
+                                                            <input type="text" name="threadReply" value="${replyRow.threadID}" hidden>
+                                                       <button type="Submit" class = "btn"  value="Submit" id="sub">Submit Reply</button>
+
+                                                       </form>
+                                                      </div>
+                                                </div>
+
+
+
+                                        </c:if>
+                                        </div>
+                                
+                                
+                                <c:if test="${subReplyCount.rowCount gt 0 }">
+                                    
+                                    
+                                    <h1>TEST</h1>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                </c:if>    
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                            </c:forEach> 
                     </div>
                 
-             
+                        <hr>
              
                 <div id="options">
                    
@@ -115,8 +177,8 @@ ORDER BY postedTime DESC;
                 
                        
                      <div class="replyFormDiv">
-               <button type="Submit" class = "btnReply"  value="reply" id="${row.threadID}">Reply</button>
-               <p style="color:red; font-weight: bold;">${messageReply}</p>
+                            <button type="Submit" class = "btnReply"  value="reply" id="${row.threadID}">Reply</button>
+                            <p style="color:red; font-weight: bold;">${messageReply}</p>
                            <div class ="hideTheseReply" id="t${row.threadID}">
                            <form action = "reply" method ="post">
                                 
@@ -130,7 +192,10 @@ ORDER BY postedTime DESC;
                                
                                 </form>
                                </div>
-                         </div>   
+                         </div>
+                                
+                                
+             
             </div>
                         
                   

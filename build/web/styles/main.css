@@ -8,6 +8,16 @@ and open the template in the editor.
     Author     : dwagner6506
 */
 
+.buttonTray{
+    
+    
+    margin-top:10px;
+    margin-bottom: 10px;
+    height: 50px;
+    
+}
+
+
 #name{
     
     background-color: #7F7FFF;
@@ -107,6 +117,7 @@ hr{
     background-color: #9999ff;
     margin-left: 20px;
      font-family: 'Sansita', sans-serif;
+     margin-bottom: 20px;
 }
 
 #titles{    
